@@ -1,0 +1,32 @@
+# poca-note requirements
+#
+# poca-note is a Node.js application, so this file is a dependency manifest
+# rather than a Python pip requirements file. `package.json` and
+# `package-lock.json` remain the authoritative npm manifests; this file is
+# read by scripts/install.sh and scripts/install.ps1 so both installers agree
+# on the minimum runtime versions and the expected npm packages.
+#
+# Format:
+#   require:<command> <comparator><version>   required system command
+#   optional:<command> <version>              optional system command
+#   npm:<package> <range>                     npm package checked after install
+#
+# Lines starting with # are ignored.
+
+# Runtime
+require:node >=22.13
+require:npm >=10
+
+# Optional database. SQLite is the default and needs no setup.
+optional:psql >=13
+
+# npm production dependencies (installed by `npm ci` / `npm install`)
+npm:express ^4.21.2
+npm:lucide-react ^0.468.0
+npm:pg ^8.23.1
+npm:react ^18.3.1
+npm:react-dom ^18.3.1
+
+# npm development dependencies (needed to build the web UI and run tests)
+npm:@vitejs/plugin-react ^4.7.0
+npm:vite ^6.4.5
